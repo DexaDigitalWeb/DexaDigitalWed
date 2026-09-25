@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="DEXA Digital Web - Páginas web modernas, rápidas y efectivas.">
+  <title>DEXA Digital Web | Páginas Web Modernas</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+    :root{
+      --bg:#020712;
+      --bg2:#061326;
+      --card:#071426;
+      --blue:#087cff;
+      --cyan:#00bfff;
+      --white:#f5f8ff;
+      --muted:#b8c3d6;
+      --line:rgba(91,150,230,.22);
+      --green:#20c77a;
+      --purple:#824cff;
+      --orange:#ff9f22;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:Inter,Arial,sans-serif;
+      background:var(--bg);
+      color:var(--white);
+      line-height:1.5;
+      overflow-x:hidden;
+    }
+    a{text-decoration:none;color:inherit}
+    button{font:inherit}
+
+    /* NAV */
+    header{
+      position:sticky;top:0;z-index:100;
+      background:rgba(2,7,18,.88);
+      backdrop-filter:blur(16px);
+      border-bottom:1px solid var(--line);
+    }
+    .nav{
+      width:min(1180px,92%);
+      height:80px;margin:auto;
+      display:flex;align-items:center;justify-content:space-between;
+    }
+    .logo{display:flex;align-items:center;gap:11px}
+    .logo-mark{
+      width:42px;height:42px;
+      display:grid;place-items:center;
+      color:var(--blue);font-size:42px;font-weight:900;
+      transform:skew(-8deg);
+      text-shadow:0 0 18px rgba(0,132,255,.4);
+    }
+    .logo-text strong{display:block;font-size:24px;line-height:1;font-weight:900}
+    .logo-text span{color:#0787ff;font-size:12px;font-weight:700;letter-spacing:1px}
+    .nav-links{display:flex;align-items:center;gap:38px;font-size:13px;font-weight:700}
+    .nav-links a{position:relative;color:#f4f6fb;padding:29px 0}
+    .nav-links a:hover,.nav-links a.active{color:#fff}
+    .nav-links a.active:after{
+      content:"";position:absolute;left:0;right:0;bottom:17px;height:3px;
+      background:var(--blue);box-shadow:0 0 10px var(--blue);
+    }
+    .nav-contact{
+      border:1px solid #087cff;border-radius:6px;
+      padding:9px 18px!important;
+    }
+    .nav-contact:after{display:none!important}
+
+    .menu{display:none;background:none;border:0;color:white;font-size:28px}
+
+    /* HERO */
+    .hero{
+      position:relative;
+      min-height:530px;
+      border-bottom:1px solid var(--line);
+      background:
+        radial-gradient(circle at 75% 40%,rgba(0,116,255,.18),transparent 31%),
+        radial-gradient(circle at 92% 90%,rgba(0,191,255,.12),transparent 24%),
+        linear-gradient(115deg,#020611,#06162c 70%,#031023);
+      overflow:hidden;
+    }
+    .hero:before{
+      content:"";position:absolute;inset:0;opacity:.22;
+      background-image:
+        linear-gradient(rgba(40,116,210,.15) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(40,116,210,.15) 1px,transparent 1px);
+      background-size:58px 58px;
+      mask-image:linear-gradient(to right,transparent 35%,#000 70%);
+    }
+    .hero-inner{
+      width:min(1180px,92%);margin:auto;min-height:530px;
+      display:grid;grid-template-columns:48% 52%;
+      align-items:center;position:relative;z-index:2;
+    }
+    .eyebrow{color:#168aff;font-size:13px;font-weight:800;letter-spacing:.5px;margin-bottom:4px}
+    h1{font-size:48px;line-height:1.02;letter-spacing:-2px;margin:0 0 23px;font-weight:900}
+    h1 span{color:#087fff}
+    .hero-copy p{max-width:510px;color:#f0f3fa;font-size:15px;margin-bottom:26px}
+    .blue-line{width:42px;height:3px;background:#087cff;margin:18px 0}
+    .features{display:flex;gap:24px;margin:12px 0 28px;flex-wrap:wrap}
+    .feature{display:flex;gap:9px;align-items:center;font-size:10px;font-weight:800;text-transform:uppercase}
+    .feature i{font-style:normal;font-size:27px;color:#0785ff}
+    .hero-actions{display:flex;gap:14px}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;
+      min-height:42px;padding:0 18px;border-radius:5px;
+      font-size:11px;font-weight:800;border:1px solid #71809a;
+      transition:.25s;cursor:pointer;
+    }
+    .btn-primary{background:#087cff;border-color:#087cff;box-shadow:0 8px 25px rgba(0,124,255,.2)}
+    .btn:hover{transform:translateY(-2px);filter:brightness(1.1)}
+    .btn-outline{background:transparent}
+
+    /* DEVICE MOCKUP */
+    .devices{height:460px;position:relative;display:flex;align-items:center;justify-content:center}
+    .laptop{
+      position:absolute;width:570px;height:350px;right:5px;top:45px;
+      border:3px solid #777f8e;border-radius:19px 19px 10px 10px;
+      background:#060b13;padding:14px;
+      box-shadow:0 20px 50px rgba(0,0,0,.6),0 0 40px rgba(0,114,255,.12);
+      transform:perspective(900px) rotateY(-4deg);
+    }
+    .screen{
+      height:100%;border-radius:9px;overflow:hidden;padding:23px;
+      background:
+        radial-gradient(circle at 75% 15%,rgba(0,155,255,.5),transparent 4%),
+        radial-gradient(circle at 78% 17%,rgba(0,155,255,.18),transparent 18%),
+        linear-gradient(135deg,#031229,#071d3b 55%,#020a18);
+      position:relative;
+    }
+    .screen .mini-nav{display:flex;justify-content:space-between;font-size:7px;color:#fff}
+    .screen-logo{font-size:12px;font-weight:900;color:#fff}.screen-logo b{color:#078cff}
+    .screen-content{margin-top:52px;width:65%}
+    .screen-content h3{font-size:23px;line-height:1.12;margin-bottom:10px}
+    .screen-content p{font-size:8px;color:#d4dced;margin-bottom:16px}
+    .screen-content .mini-btn{display:inline-block;background:#087cff;padding:7px 10px;border-radius:3px;font-size:7px}
+    .phone{
+      position:absolute;width:190px;height:350px;right:-5px;bottom:0;
+      border:4px solid #626b7a;border-radius:28px;background:#03070e;padding:8px;
+      box-shadow:0 20px 45px rgba(0,0,0,.7);z-index:3;
+      transform:rotate(2deg);
+    }
+    .phone-screen{height:100%;border-radius:19px;overflow:hidden;padding:18px 13px;
+      background:linear-gradient(145deg,#06152e,#020713)}
+    .phone-top{display:flex;justify-content:space-between;font-size:8px;margin-bottom:38px}
+    .phone-screen h4{font-size:19px;line-height:1.15;margin-bottom:10px}
+    .phone-screen p{font-size:8px;color:#d0d8e8}
+    .phone-btn{display:block;background:#087cff;text-align:center;padding:9px;border-radius:4px;font-size:8px;margin-top:17px}
+
+    /* SECTIONS */
+    section{scroll-margin-top:80px}
+    .services{
+      background:#fff;color:#081020;padding:28px 0 30px;
+      text-align:center;
+    }
+    .section-kicker{font-size:12px;color:#087cff;font-weight:800;letter-spacing:.4px}
+    .section-title{font-size:23px;line-height:1.1;margin:5px 0 22px;font-weight:900}
+    .service-grid{width:min(1180px,92%);margin:auto;display:grid;grid-template-columns:repeat(6,1fr);gap:18px}
+    .service{padding:3px 5px}
+    .service-icon{font-size:37px;margin-bottom:8px}
+    .service h3{font-size:12px;margin-bottom:8px}
+    .service p{font-size:9px;color:#333b48;line-height:1.45}
+
+    .projects{background:#030916;padding:24px 0 16px}
+    .projects .section-title,.projects .section-kicker{text-align:center}
+    .projects-sub{text-align:center;color:#aebbd0;font-size:11px;margin-top:-17px;margin-bottom:18px}
+    .project-grid{width:min(1100px,92%);margin:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .project{
+      border:1px solid #334761;border-radius:11px;overflow:hidden;background:#061225;
+    }
+    .project-image{height:170px;padding:17px;position:relative;overflow:hidden}
+    .project-image:after{content:"";position:absolute;inset:auto -20% -55% -20%;height:150px;background:radial-gradient(circle,rgba(255,255,255,.12),transparent 65%)}
+    .nature{background:linear-gradient(135deg,#0b4b27,#123d17 60%,#07180e)}
+    .food{background:linear-gradient(135deg,#331608,#160904 65%,#070301)}
+    .gamer{background:linear-gradient(135deg,#251054,#090318 70%,#2a075e)}
+    .project-image h3{font-size:17px;max-width:180px;line-height:1.12;position:relative;z-index:2}
+    .project-image p{font-size:8px;color:#e1e5ed;max-width:180px;margin-top:9px;position:relative;z-index:2}
+    .project-image .tag{position:absolute;left:17px;bottom:17px;font-size:7px;background:#12b44c;padding:5px 8px;border-radius:3px;z-index:2}
+    .food .tag{background:#ff8b18}.gamer .tag{background:#7a38ff}
+    .project-body{padding:14px 15px 13px;display:flex;justify-content:space-between;gap:10px;align-items:center}
+    .project-body h4{font-size:12px}.project-body p{font-size:9px;color:#bac5d5;margin-top:3px}
+    .project-demo{border:1px solid #65748b;border-radius:4px;padding:7px 10px;font-size:8px;white-space:nowrap}
+
+    /* PRICE */
+    .business{background:#030916;padding:0 0 28px}
+    .business-grid{width:min(1180px,92%);margin:auto;display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:1px}
+    .panel{background:#f8f9fb;color:#101827;padding:12px;border-radius:10px}
+    .panel.dark{background:#f8f9fb}
+    .panel-title{text-align:center;font-size:13px;font-weight:900;margin-bottom:9px}
+    .prices{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}
+    .price-card{border:1px solid #d9dee7;border-radius:8px;padding:10px;background:#fff;text-align:center}
+    .price-card.popular{border-color:#087cff;box-shadow:0 4px 15px rgba(0,100,255,.12)}
+    .badge{background:#087cff;color:white;border-radius:20px;padding:3px 7px;font-size:7px;font-weight:800;display:inline-block;margin-top:-21px;position:relative}
+    .price-card h4{font-size:9px;margin:6px 0 2px}.price{font-size:20px;font-weight:900}
+    .price-card small{font-size:7px;color:#667085}
+    .checks{list-style:none;text-align:left;margin:10px 0;font-size:7px;line-height:1.8;color:#3b4350}
+    .checks li:before{content:"✓";color:#12a85d;font-weight:900;margin-right:4px}
+    .price-btn{width:100%;border:0;background:#19ad57;color:#fff;padding:7px;border-radius:4px;font-size:8px;font-weight:800;cursor:pointer}
+    .popular .price-btn{background:#087cff}.premium .price-btn{background:#6534d8}
+
+    .steps{display:grid;gap:10px;margin-top:5px}
+    .step{display:grid;grid-template-columns:32px 1fr;gap:9px;align-items:center}
+    .step-num{width:32px;height:32px;border-radius:50%;background:#0757a8;color:#fff;display:grid;place-items:center;font-size:13px;font-weight:900}
+    .step h4{font-size:9px}.step p{font-size:7px;color:#555e6b}
+
+    .goal .target{color:#087cff;font-size:12px;font-weight:900}
+    .goal p{font-size:9px;color:#384150;margin:9px 0}
+    .progress{height:11px;background:#d4d8de;border-radius:10px;overflow:hidden;margin:14px 0}
+    .progress span{display:block;width:0;height:100%;background:#087cff}
+    .goal-box{border:1px solid #087cff;border-radius:5px;padding:8px;text-align:center;color:#0758ac;font-size:10px;font-weight:800}
+
+    /* FOOTER */
+    footer{background:#020713;border-top:1px solid var(--line);padding:22px 0 8px}
+    .footer-grid{width:min(1180px,92%);margin:auto;display:grid;grid-template-columns:1.1fr 1fr 1fr 1fr;gap:25px}
+    footer h3{font-size:13px;margin-bottom:9px}
+    footer p,footer a{font-size:9px;color:#c0cad9}
+    .contact-list{display:grid;gap:8px}.contact-list span{color:#22c975;font-size:13px;margin-right:7px}
+    .copyright{text-align:center;border-top:1px solid #1c2a3d;margin-top:18px;padding-top:8px;color:#657188;font-size:8px}
+    .whatsapp{
+      position:fixed;right:18px;bottom:18px;width:47px;height:47px;border-radius:50%;
+      background:#20c967;color:white;display:grid;place-items:center;font-size:24px;
+      box-shadow:0 7px 25px rgba(32,201,103,.35);z-index:90;
+    }
+
+    /* MOBILE */
+    @media(max-width:900px){
+      .nav-links{display:none}.menu{display:block}
+      .hero-inner{grid-template-columns:1fr;padding:45px 0 0}
+      .hero{min-height:850px}
+      .hero-copy{text-align:left}
+      h1{font-size:42px}
+      .devices{height:390px;margin-top:0}
+      .laptop{width:520px;right:50%;transform:translateX(50%) scale(.78);transform-origin:center top}
+      .phone{right:2%;height:290px;width:155px}
+      .service-grid{grid-template-columns:repeat(3,1fr)}
+      .business-grid{grid-template-columns:1fr}
+      .footer-grid{grid-template-columns:repeat(2,1fr)}
+    }
+    @media(max-width:600px){
+      .nav{height:68px}.logo-text strong{font-size:20px}
+      .hero{min-height:790px}.hero-inner{width:88%}
+      h1{font-size:36px;letter-spacing:-1.4px}
+      .hero-copy p{font-size:13px}
+      .features{gap:12px}.feature{font-size:8px}
+      .hero-actions{flex-direction:column;align-items:stretch}
+      .devices{height:330px}
+      .laptop{width:430px;height:270px;top:30px;transform:translateX(50%) scale(.75)}
+      .phone{width:125px;height:245px;right:0}
+      .phone-screen h4{font-size:15px}
+      .service-grid{grid-template-columns:repeat(2,1fr);gap:20px 8px}
+      .project-grid{grid-template-columns:1fr}
+      .project-image{height:180px}
+      .prices{grid-template-columns:1fr}
+      .price-card{padding:12px}
+      .footer-grid{grid-template-columns:1fr}
+      .whatsapp{width:43px;height:43px;right:13px;bottom:13px}
+    }
+  
+/* Única demostración: NATURAVIDA */
+.projects .project-grid{margin-top:24px}
+.projects .project-grid .project{width:100%}
+.projects .project-grid .project-image{height:230px}
+.projects .project-grid .project-body{padding:18px 20px}
+.projects .project-grid .project-demo{background:#087cff;border-color:#087cff;color:#fff;font-weight:800;padding:10px 15px}
+@media(max-width:600px){
+  .projects .project-grid .project-image{height:200px}
+  .projects .project-grid .project-body{align-items:flex-start;flex-direction:column}
+  .projects .project-grid .project-demo{width:100%}
+}
+
+</style>
+</head>
+
+<body>
+<header>
+  <nav class="nav">
+    <a href="#inicio" class="logo">
+      <div class="logo-mark">D</div>
+      <div class="logo-text"><strong>DEXA</strong><span>DIGITAL WEB</span></div>
+    </a>
+    <div class="nav-links">
+      <a class="active" href="#inicio">INICIO</a>
+      <a href="#servicios">SERVICIOS</a>
+      <a href="#proyectos">PROYECTOS</a>
+      <a href="#precios">PRECIOS</a>
+      <a href="#sobre-mi">SOBRE MÍ</a>
+      <a class="nav-contact" href="#contacto">CONTACTO</a>
+    </div>
+    <button class="menu" aria-label="Abrir menú" onclick="toggleMenu()">☰</button>
+  </nav>
+</header>
+
+<main>
+  <section id="inicio" class="hero">
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <div class="eyebrow">DISEÑAMOS Y DESARROLLAMOS</div>
+        <h1>PÁGINAS WEB<br><span>MODERNAS</span><br>Y EFECTIVAS</h1>
+        <div class="blue-line"></div>
+        <p>Creamos páginas web profesionales, rápidas y adaptadas a cualquier dispositivo para impulsar tu negocio en Internet.</p>
+
+        <div class="features">
+          <div class="feature"><i>ϟ</i><span>RÁPIDAS<br>Y LIGERAS</span></div>
+          <div class="feature"><i>▣</i><span>100%<br>RESPONSIVAS</span></div>
+          <div class="feature"><i>&lt;/&gt;</i><span>CÓDIGO<br>LIMPIO</span></div>
+          <div class="feature"><i>♢</i><span>SEGURAS<br>Y OPTIMIZADAS</span></div>
+        </div>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="https://wa.me/573001805830?text=Hola%20DEXA%20Digital%20Web,%20quiero%20informaci%C3%B3n%20sobre%20una%20p%C3%A1gina%20web.">◉ ESCRÍBEME POR WHATSAPP</a>
+          <a class="btn btn-outline" href="#proyectos">VER PROYECTOS</a>
+        </div>
+      </div>
+
+      <div class="devices" aria-hidden="true">
+        <div class="laptop">
+          <div class="screen">
+            <div class="mini-nav">
+              <div class="screen-logo">D <b>DEXA</b></div>
+              <div>INICIO &nbsp;&nbsp; SERVICIOS &nbsp;&nbsp; SOBRE MÍ &nbsp;&nbsp; CONTACTO</div>
+            </div>
+            <div class="screen-content">
+              <h3>Soluciones digitales<br>que hacen crecer<br>tu negocio</h3>
+              <p>Diseñamos experiencias digitales que conectan con tus clientes y generan resultados.</p>
+              <span class="mini-btn">VER PROYECTOS</span>
+            </div>
+          </div>
+        </div>
+        <div class="phone">
+          <div class="phone-screen">
+            <div class="phone-top"><b>DEXA</b><span>☰</span></div>
+            <h4>Soluciones<br>digitales que<br>hacen crecer<br>tu negocio</h4>
+            <p>Diseñamos experiencias digitales que conectan con tus clientes.</p>
+            <span class="phone-btn">VER PROYECTOS</span>
+            <span class="phone-btn" style="background:transparent;border:1px solid #78869a">CONTACTAR</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="servicios" class="services">
+    <div class="section-kicker">LO QUE PUEDO HACER POR TI</div>
+    <h2 class="section-title">SERVICIOS QUE OFREZCO</h2>
+    <div class="service-grid">
+      <article class="service"><div class="service-icon">▣</div><h3>PÁGINAS WEB PERSONALIZADAS</h3><p>Diseño y desarrollo de sitios web modernos y adaptados a todos los dispositivos.</p></article>
+      <article class="service"><div class="service-icon">♧</div><h3>TIENDAS ONLINE</h3><p>Tiendas en línea funcionales y atractivas para vender tus productos por Internet.</p></article>
+      <article class="service"><div class="service-icon">✎</div><h3>DISEÑO UI/UX</h3><p>Interfaces modernas, atractivas y enfocadas en la mejor experiencia.</p></article>
+      <article class="service"><div class="service-icon">⌁</div><h3>LANDING PAGES</h3><p>Páginas de aterrizaje optimizadas para convertir visitas en clientes.</p></article>
+      <article class="service"><div class="service-icon">▱</div><h3>EDICIÓN Y MEJORAS</h3><p>Mejoro, actualizo y optimizo tu página web existente para que rinda al máximo.</p></article>
+      <article class="service"><div class="service-icon">⚙</div><h3>OTROS SERVICIOS</h3><p>Automatizaciones, formularios, integraciones y soluciones a la medida.</p></article>
+    </div>
+  </section>
+
+  <section id="proyectos" class="projects">
+    <div class="section-kicker">EJEMPLOS DE LO QUE PUEDO CREAR</div>
+    <h2 class="section-title">PROYECTO DE DEMOSTRACIÓN</h2>
+    <div class="projects-sub">Algunos ejemplos de páginas que puedo crear para ti.</div>
+    <div class="project-grid" style="grid-template-columns:minmax(0,760px);justify-content:center;">
+      <article class="project">
+        <div class="project-image nature">
+          <h3>Productos frescos<br>para cada día</h3>
+          <p>Frutas, verduras y productos naturales directo del campo colombiano a tu hogar.</p>
+          <span class="tag">TIENDA ONLINE</span>
+        </div>
+        <div class="project-body">
+          <div>
+            <h4>NATURAVIDA</h4>
+            <p>Tienda online de productos frescos con catálogo, categorías y carrito.</p>
+          </div>
+          <a class="project-demo" href="./NatuVida/" aria-label="Abrir demo de NATURAVIDA">VER DEMO ↗</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="precios" class="business">
+    <div class="business-grid">
+      <div class="panel">
+        <div class="panel-title">PAQUETES Y PRECIOS</div>
+        <div class="prices">
+          <article class="price-card"><h4>BÁSICO</h4><small>Landing Page Simple</small><div class="price">$30.000</div><small>COP</small><ul class="checks"><li>1 página</li><li>Diseño responsive</li><li>Formulario de contacto</li><li>1 revisión</li></ul><button class="price-btn" onclick="pedir('Básico')">PEDIR AHORA</button></article>
+          <article class="price-card popular"><span class="badge">MÁS POPULAR</span><h4>ESTÁNDAR</h4><small>Sitio Web Profesional</small><div class="price">$60.000</div><small>COP</small><ul class="checks"><li>Hasta 3 páginas</li><li>Diseño responsive</li><li>Secciones personalizadas</li><li>Formulario de contacto</li><li>2 revisiones</li></ul><button class="price-btn" onclick="pedir('Estándar')">PEDIR AHORA</button></article>
+          <article class="price-card premium"><h4>PREMIUM</h4><small>Sitio Web Completo</small><div class="price">$90.000</div><small>COP</small><ul class="checks"><li>Hasta 5 páginas</li><li>Diseño responsive</li><li>Secciones personalizadas</li><li>Formulario de contacto</li><li>3 revisiones</li></ul><button class="price-btn" onclick="pedir('Premium')">PEDIR AHORA</button></article>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-title">CÓMO TRABAJO</div>
+        <div class="steps">
+          <div class="step"><div class="step-num">1</div><div><h4>Hablamos de tu idea</h4><p>Me cuentas lo que necesitas y te asesoro para lograrlo.</p></div></div>
+          <div class="step"><div class="step-num">2</div><div><h4>Diseño y desarrollo</h4><p>Creo tu página web con un diseño moderno y funcional.</p></div></div>
+          <div class="step"><div class="step-num">3</div><div><h4>Revisiones y ajustes</h4><p>Revisamos juntos y hago los ajustes que necesites.</p></div></div>
+          <div class="step"><div class="step-num">4</div><div><h4>Entrega final</h4><p>Te entrego tu página lista para publicar y usar.</p></div></div>
+        </div>
+      </div>
+
+      <div id="sobre-mi" class="panel goal">
+        <div class="panel-title">MI META</div>
+        <div class="target">🎯 PC GAMER</div>
+        <p>Estoy trabajando para alcanzar mi meta y seguir creciendo cada día.</p>
+        <strong>$0 / $3.000.000 COP</strong>
+        <div class="progress"><span></span></div>
+        <p><b>¿Cuántas páginas necesito vender?</b></p>
+        <p>Si vendo 2 páginas estándar ($60.000) por semana, 2 meses puedo lograrlo.</p>
+        <div class="goal-box">2 páginas por semana<br>= $120.000 × 4 = $480.000 / mes</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="contacto">
+  <div class="footer-grid">
+    <div>
+      <div class="logo"><div class="logo-mark">D</div><div class="logo-text"><strong>DEXA</strong><span>DIGITAL WEB</span></div></div>
+      <p style="margin-top:12px">Transformo ideas en páginas web modernas, rápidas y efectivas que hacen crecer tu negocio.</p>
+    </div>
+    <div><h3>CONTACTO</h3><div class="contact-list"><p><span>◉</span>3001805830</p><p><span>✉</span>Wualterwilliam2009@gmail.com</p><p><span>⌖</span>Disponible para proyectos en todo Colombia</p></div></div>
+    <div><h3>CONECTA CONMIGO</h3><div class="contact-list"><a href="https://wa.me/573001805830"><span>◉</span>Escríbeme por WhatsApp</a><a href="#"><span>◎</span>@dexadigitalweb</a><a href="#"><span>f</span> Dexa Digital Web</a></div></div>
+    <div><h3>¿TIENES UN PROYECTO?</h3><p>Escríbeme y hagamos realidad tu idea.</p><a class="btn btn-primary" style="margin-top:12px" href="https://wa.me/573001805830?text=Hola%20DEXA,%20quiero%20cotizar%20una%20p%C3%A1gina%20web.">ESCRÍBEME AHORA</a></div>
+  </div>
+  <div class="copyright">© 2026 DEXA DIGITAL WEB. Todos los derechos reservados.</div>
+</footer>
+
+<a class="whatsapp" href="https://wa.me/573001805830" aria-label="WhatsApp">◉</a>
+
+<script>
+  function pedir(plan){
+    const msg = encodeURIComponent("Hola DEXA Digital Web, quiero pedir el paquete " + plan + ". Quiero más información.");
+    window.open("https://wa.me/573001805830?text="+msg, "_blank");
+  }
+
+  function toggleMenu(){
+    const links = document.querySelector('.nav-links');
+    if(links.style.display === 'flex'){
+      links.style.display='';
+    }else{
+      links.style.display='flex';
+      links.style.position='absolute';
+      links.style.top='68px';
+      links.style.left='0';
+      links.style.right='0';
+      links.style.padding='18px';
+      links.style.background='#030916';
+      links.style.flexDirection='column';
+      links.style.gap='18px';
+      links.style.borderBottom='1px solid rgba(91,150,230,.22)';
+    }
+  }
+
+  document.querySelectorAll('.nav-links a').forEach(link=>{
+    link.addEventListener('click',()=>{
+      if(window.innerWidth <= 900) document.querySelector('.nav-links').style.display='';
+    });
+  });
+</script>
+</body>
+</html>
